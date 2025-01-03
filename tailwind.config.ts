@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        'breaker': "700px"
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",

@@ -25,7 +25,7 @@ export default function Home() {
 
         <main className="w-full z-50 flex flex-col gap-10 items-center pt-20">
 
-          <h1 className="w-1/3 text-[50px] text-center font-bold bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text">Free, AI-powered answers from your PDFs—effortless and instant.</h1>
+          <h1 className="w-full breaker:w-1/3 text-[50px] text-center font-bold bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text">Free, AI-powered answers from your PDFs—effortless and instant.</h1>
 
           <Link href="/ai" className='bg-white text-blue-600 font-bold px-5 py-3 rounded-xl border-2 border-white hover:bg-[rgba(0,0,0,0)] text-[20px]'>Get Started &rarr;</Link>
 
