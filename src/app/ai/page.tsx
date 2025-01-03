@@ -20,9 +20,11 @@ export default function AI() {
     const [currentQuery, setCurrentQuery] = useState<string | null>(null);
     const [conversations, setConversations] = useState<ConversationType[]>();
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [fileName, setFileName] = useState<string | null>(null);
 
     const handleFileUpload = (event: any) => {
         const file = event.target.files[0];
+        setFileName(file.name);
         pdfToText(file)
             .then((text: any) => {
                 setCurrentContext(text);
@@ -99,7 +101,8 @@ export default function AI() {
 
                 {/* QUESTIONS CONTAINER */}
                 <div className="w-full h-[7%] border-t border-slate-500 flex items-center px-10 py-2">
-                    <p className='pr-2 cursor-pointer' onClick={() => setReadFile(!readFile)}>
+                    <p className='pr-2 cursor-pointer relative' onClick={() => setReadFile(!readFile)}>
+                        <span className='absolute -top-2 -translate-y-full -left-5 text-[10px] backdrop-blur-sm'>{fileName}</span>
                         <AttachFileIcon />
                     </p>
                     <p className='w-full h-full'>
