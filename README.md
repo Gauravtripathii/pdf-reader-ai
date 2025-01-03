@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# EZPDFAI
 
-## Getting Started
+EzPdfAI is a **free, AI-powered tool** that simplifies working with PDFs. Upload your PDF, ask questions, and get instant answers with ease.  
 
-First, run the development server:
+## Features  
+- **AI-Powered Queries:** Extract insights and find answers in seconds.  
+- **User-Friendly Interface:** Designed with simplicity and ease of use in mind.  
+- **Completely Free:** No charges, no hidden costs—just pure functionality.  
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Tech Stack  
+- **React.js**: Frontend framework for a seamless user experience.  
+- **Axios**: Simplified API requests.  
+- **Material UI**: Elegant and responsive design components.  
+- **Flaticon**: Beautiful icons for enhanced visuals.  
+  - [Flaticon](https://www.flaticon.com)  
+- **react-pdftotext**: Extracts text from PDFs effortlessly.  
+  - [react-pdftotext](https://www.npmjs.com/search?q=pdftotext)  
+- **react-hot-toast**: Provides delightful and customizable toast notifications.  
+  - [react-hot-toast](https://react-hot-toast.com/)  
+
+## Getting Started   
+   ```bash  
+   git clone https://github.com/Gauravtripathii/pdf-reader-ai
+   cd pdf-reader-ai  
 ```
+## Connect With Me  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+You can find me on the following platforms:  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [**LinkedIn**](https://www.linkedin.com/in/gaurav-kumar-tripathii/)  
+- [**Twitter**](https://x.com/gaurav0tripathi)  
+- [**GitHub**](https://github.com/Gauravtripathii/)  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
