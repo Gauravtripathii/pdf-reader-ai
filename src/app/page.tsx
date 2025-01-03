@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 import pdfToText from 'react-pdftotext';
 import axios from 'axios';
 import Image from 'next/image';
+import toast from 'react-hot-toast';
 
 interface ConversationType {
   question: string;
@@ -17,26 +18,36 @@ export default function Home() {
   const [currentContext, setCurrentContext] = useState<string | null>(null);
   const [currentQuery, setCurrentQuery] = useState<string | null>(null);
   const [conversations, setConversations] = useState<ConversationType[]>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleFileUpload = (event: any) => {
     const file = event.target.files[0];
     pdfToText(file)
       .then((text: any) => {
         setCurrentContext(text);
+        setIsLoading(true);
+        toast.success("File Uploaded, Ask your query now!");
       })
-      .catch((err: any) => {
-        console.error(err);
+      .catch((error: any) => {
+        toast.error("Error uploading file, please try again!");
+        console.log(error);
       })
       .finally(() => {
         setReadFile(false);
+        setIsLoading(false);
       });
   };
 
   const askGroq = async (event: any) => {
     event.preventDefault();
+    setIsLoading(true);
+    if (!currentContext || !currentQuery) {
+      setIsLoading(false);
+      toast.error("Please upload a file and ask a query!");
+      return;
+    }
     await axios.post('/api/ask', { currentContext, currentQuery })
       .then((response: any) => {
-        console.log(response.data.answer);
         if (currentQuery) {
           setConversations(prevConversations => [
             ...(prevConversations || []),
@@ -45,11 +56,13 @@ export default function Home() {
         }
       })
       .catch((error: any) => {
-        console.error(error);
+        toast.error("Error asking query, please try again!");
+        console.log(error);
       })
       .finally(() => {
         setCurrentQuery(null);
-      })
+        setIsLoading(false);
+      });
   }
 
   useEffect(() => {
@@ -57,7 +70,7 @@ export default function Home() {
   }, [conversations]);
 
   return (
-    <div className="w-full h-[100svh] flex flex-col">
+    <div className="w-full h-[100svh] flex flex-col relative">
       <header className="w-full h-[10%] border-b border-black px-10 flex items-center">
         <div className="text-[20px] font-bold font-mono">AI PDF Reader</div>
       </header>
@@ -110,6 +123,14 @@ export default function Home() {
           </div>
         )}
       </main>
+
+      {/* LOADING SCREEN */}
+      {isLoading && (
+        <div className="absolute top-0 left-0 w-full h-[100svh] flex flex-col items-center justify-center bg-[rgba(0,0,0,0.75)] text-[30px] font-bold font-mono">
+          Thinking...
+          {/* <Image src="/loading.gif" alt='bot' width={1900} height={1900} className='w-12 h-12 rounded-full' /> */}
+        </div>
+      )}
     </div>
   );
 }
