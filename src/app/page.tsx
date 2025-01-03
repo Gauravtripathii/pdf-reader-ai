@@ -5,6 +5,7 @@ import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import React, { useState, useEffect } from 'react';
 import pdfToText from 'react-pdftotext';
 import axios from 'axios';
+import Image from 'next/image';
 
 interface ConversationType {
   question: string;
@@ -45,7 +46,10 @@ export default function Home() {
       })
       .catch((error: any) => {
         console.error(error);
-      });
+      })
+      .finally(() => {
+        setCurrentQuery(null);
+      })
   }
 
   useEffect(() => {
@@ -60,12 +64,22 @@ export default function Home() {
 
       <main className="w-full h-[90%] bg-black relative">
         {/* ANSWER CONTAINER */}
-        <div className="w-full h-[93%] px-10">
+        <div className="w-full h-[93%] px-10 pt-5 flex flex-col gap-5 overflow-auto">
 
           {conversations?.map((conversation, index) => (
-            <div key={index} className="">
-              <p>{conversation.question}</p>
-              <p>{conversation.answer}</p>
+            <div key={index} className="text-[20px] flex flex-col gap-3 border-b pb-5">
+              <p className='flex items-center gap-2'>
+                <span className='w-12 h-12 rounded-full overflow-hidden'>
+                  <Image src="/user.gif" alt='bot' width={1900} height={1900} className='w-full h-full' />
+                </span>
+                <span className='w-[90%] text-justify'>{conversation.question}</span>
+              </p>
+              <p className='flex gap-2'>
+                <span className='w-12 h-12 rounded-full overflow-hidden'>
+                  <Image src="/bot.gif" alt='user' width={1900} height={1900} className='w-full h-full' />
+                </span>
+                <span className='w-[90%] text-justify'>{conversation.answer}</span>
+              </p>
             </div>
           ))}
 
