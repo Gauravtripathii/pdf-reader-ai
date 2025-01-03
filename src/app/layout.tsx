@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PDF Reader AI",
+  title: "EZPDF AI",
   description: "use AI to read PDFs",
 };
 
